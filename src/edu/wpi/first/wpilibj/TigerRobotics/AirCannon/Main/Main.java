@@ -18,12 +18,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class Main extends IterativeRobot {
+    TeleopController tc;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-
+        tc = new TeleopController();
+        tc.setupDashboard();
     }
 
     /**
@@ -37,6 +40,7 @@ public class Main extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        tc.handle();
         
     }
     

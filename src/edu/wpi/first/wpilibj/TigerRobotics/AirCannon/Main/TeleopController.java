@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.AirCannon;
  * @author gixxy
  */
 public class TeleopController {
-    private TeleopController instance = null;
+    private static TeleopController instance = null;
     private DriveTrain dt;
     private AirCannon ac;
     private ControlMap cm;
@@ -28,15 +28,11 @@ public class TeleopController {
         ssb = SoftSwitchBoard.getInstance();
     }
     
-    public TeleopController getInstance() {
+    public static TeleopController getInstance() {
         if(instance == null) {
             instance = new TeleopController();
         }
         return instance;
-    }
-    
-    public void setupDashboard() {
-        
     }
     
     public void handle() {

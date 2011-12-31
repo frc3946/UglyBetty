@@ -43,4 +43,12 @@ public class DriveTrain {
     public void arcadeDrive(double throttle, double curve) {
         rd.arcadeDrive(throttle, curve);
     }
+    
+    public double getLeftThrottle() {
+        return left.getSpeed();
+    }
+    
+    public double getRightThrottle() {
+        return right.getSpeed();
+    }
 }
