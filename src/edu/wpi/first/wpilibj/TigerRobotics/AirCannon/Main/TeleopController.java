@@ -7,7 +7,7 @@ package edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Main;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls.ArcadeControl;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls.ControlMap;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls.TankControl;
-import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.SoftSwitchBoard;
+import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls.SoftSwitchBoard;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.DriveTrain;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.AirCannon;
 /**

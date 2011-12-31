@@ -4,7 +4,6 @@
  */
 package edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls;
 
-import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.SoftSwitchBoard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
 
