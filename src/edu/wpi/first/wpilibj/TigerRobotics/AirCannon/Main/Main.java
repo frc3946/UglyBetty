@@ -9,6 +9,8 @@ package edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Main;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.DriveTrain;
+import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,6 +21,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  */
 public class Main extends IterativeRobot {
     TeleopController tc;
+    BettyDash bd;
+    DashBoard db;
+    DriveTrain dt;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -26,14 +31,26 @@ public class Main extends IterativeRobot {
      */
     public void robotInit() {
         tc = new TeleopController();
-        tc.setupDashboard();
+        bd = BettyDash.getInstance();
+        db = DashBoard.getInstance();
+        dt = DriveTrain.getInstance();
+        bd.setupDash();
     }
-
+    
+    /**
+     * This function is called periodically while disabled
+     */
+    public void disabledPeriodic() {
+        db.post("Robot Status", "Disabled");
+        dt.drive(0,0);
+    }
+    
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-
+        db.post("Robot Status", "Autonomous");
+        dt.drive(0,0);
     }
 
     /**
@@ -41,7 +58,8 @@ public class Main extends IterativeRobot {
      */
     public void teleopPeriodic() {
         tc.handle();
-        
+        db.post("Robot Status", "Teleop");
+        bd.updateDash();
     }
     
 }

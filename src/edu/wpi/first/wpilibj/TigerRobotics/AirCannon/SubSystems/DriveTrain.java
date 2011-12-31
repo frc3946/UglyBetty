@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Victor;
 public class DriveTrain {
     private int LEFT_VICTOR_SLOT = 1;
     private int RIGHT_VICTOR_SLOT = 2;
-    public static DriveTrain instance = null;
+    private static DriveTrain instance = null;
     private Victor left;
     private Victor right;
     private RobotDrive rd;

@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls;
 
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.SoftSwitchBoard;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
 
 /**
  *
@@ -18,11 +19,13 @@ public class TankControl implements ControlMap {
     private int TANKSWITCH_BUTTON = 2;
     private int FIRE_BUTTON = 3;
     private static TankControl instance = null;
+    private DashBoard db;
     private SoftSwitchBoard ssb;
     private Joystick rightStick;
     private Joystick leftStick;
     
     private TankControl() {
+        db = DashBoard.getInstance();
         ssb = SoftSwitchBoard.getInstance();
         rightStick = new Joystick(RIGHTSTICK_PORT);
         leftStick = new Joystick(LEFTSTICK_PORT);
@@ -36,10 +39,12 @@ public class TankControl implements ControlMap {
     }
     
     public double getThrottle() {
+        db.post("Drive Error","getThrottle in Tank");
         return 0.0;
     }
 
     public double getTurn() {
+        db.post("Drive Error","getTurn in Tank");
         return 0.0;
     }
 
@@ -62,7 +67,7 @@ public class TankControl implements ControlMap {
     }
 
     public void setTankSwitch() {
-        if(rightStick.getRawButton(STOPSWITCH_BUTTON)) {
+        if(rightStick.getRawButton(TANKSWITCH_BUTTON)) {
             ssb.getTankModeSwitch().toggleState();
         }
     }

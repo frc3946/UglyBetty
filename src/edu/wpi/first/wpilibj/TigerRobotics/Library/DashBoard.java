@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
  *
  * @author gixxy
  */
-public class DashBoard extends SmartDashboard {
+public class DashBoard {
     private static DashBoard instance = null;
     private static SmartDashboard sd;
     
-    private void DashBoard() {
+    private DashBoard() {
         sd = new SmartDashboard();
     }
     
@@ -40,4 +40,6 @@ public class DashBoard extends SmartDashboard {
     public void post(String key, String value) {
         SmartDashboard.putString(key, value);
     }
+
+    
 }
