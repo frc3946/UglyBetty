@@ -7,7 +7,7 @@ package edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls;
 import edu.wpi.first.wpilibj.TigerRobotics.Library.SoftSwitch;
 
 /**
- *
+ * Manages the Currently used SoftSwitch Instances
  * @author gixxy
  */
 public class SoftSwitchBoard {
@@ -20,6 +20,10 @@ public class SoftSwitchBoard {
         tankMode = new SoftSwitch(false);
     }
     
+    /**
+     * 
+     * @return Singleton Instance
+     */
     public static SoftSwitchBoard getInstance() {
         if(instance == null) {
             instance = new SoftSwitchBoard();
@@ -27,10 +31,18 @@ public class SoftSwitchBoard {
         return instance;
     }
     
+    /**
+     * 
+     * @return Tank Mode Switch Instance
+     */
     public SoftSwitch getTankModeSwitch() {
         return tankMode;
     }
     
+    /**
+     * 
+     * @return Stop Mode Switch Instance
+     */
     public SoftSwitch getStopModeSwitch() {
         return stopMode;
     }

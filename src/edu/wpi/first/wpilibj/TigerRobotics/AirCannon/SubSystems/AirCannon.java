@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
- *
+ * Handles the AirCannon's Cannon
  * @author gixxy
  */
 public class AirCannon {
@@ -20,19 +20,28 @@ public class AirCannon {
         ac = new PWM(CANNON_PWM_SLOT);
     }
     
+    /**
+     * 
+     * @return Singleton Instance
+     */
     public static AirCannon getInstance() {
         if(instance == null) {
             instance = new AirCannon();
         }
         return instance;
     }
-    
+    /**
+     * Fires the Air Cannon
+     */
     public void fire() {
         ac.setPosition(1);
         Timer.delay(4);
         ac.setPosition(0);
     }
     
+    /**
+     * Will recharge AirCannon Pressure (Currently does NOTHING)
+     */
     public void recharge() {
         
     }

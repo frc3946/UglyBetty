@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls.SoftSwitchBoard;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.DriveTrain;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.AirCannon;
 /**
- *
+ * Handles getting inputs from Controls and sending data to Subsystems
  * @author gixxy
  */
 public class TeleopController {
@@ -27,14 +27,19 @@ public class TeleopController {
         cm = ArcadeControl.getInstance();
         ssb = SoftSwitchBoard.getInstance();
     }
-    
+    /**
+     * 
+     * @return Singleton Instance
+     */
     public static TeleopController getInstance() {
         if(instance == null) {
             instance = new TeleopController();
         }
         return instance;
     }
-    
+    /**
+     * Gets inputs from Control package and sends them to the SubSystems package
+     */
     public void handle() {
         cm.setStopSwitch();
         cm.setTankSwitch();
@@ -54,7 +59,7 @@ public class TeleopController {
                 }
             }
         } else { //Robot is Stopped
-            
+            dt.drive(0,0);
         }
     }
 }

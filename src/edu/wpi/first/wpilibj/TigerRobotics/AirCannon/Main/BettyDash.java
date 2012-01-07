@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls.SoftSwitchBoard;
 import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
 
 /**
- *
+ * Handles setup and periodic updating of SmartDashboard
  * @author gixxy
  */
 public class BettyDash {
@@ -24,13 +24,19 @@ public class BettyDash {
         dt= DriveTrain.getInstance();
     }
     
+    /**
+     * 
+     * @return Singleton Instance
+     */
     public static BettyDash getInstance() {
         if(instance == null) {
             instance = new BettyDash();
         }
         return instance;
     }
-    
+    /**
+     * Sets up all spaces on the Dashboard.
+     */
     public void setupDash() {
         db.post("Robot Status", "Robot Init");
         db.post("Stopped", false);
@@ -40,6 +46,9 @@ public class BettyDash {
         db.post("Drive Error", "Null");
     }
     
+    /**
+     * Updates most spaces in the Dashboard.
+     */
     public void updateDash() {
         db.post("Stopped", ssb.getStopModeSwitch().getState());
         if(ssb.getTankModeSwitch().getState()) {

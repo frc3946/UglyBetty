@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
 
 /**
- *
+ * Handles driving the AirCannon
  * @author gixxy
  */
 public class DriveTrain {
@@ -25,6 +25,10 @@ public class DriveTrain {
         rd = new RobotDrive(left,right);
     }
     
+    /**
+     * 
+     * @return Singleton Instance
+     */
     public static DriveTrain getInstance() {
         if(instance == null) {
             instance = new DriveTrain();
@@ -32,22 +36,45 @@ public class DriveTrain {
         return instance;
     }
     
+    /**
+     * General Drive Method
+     * @param throttle How fast to go
+     * @param curve How much to turn
+     */
     public void drive(double throttle, double curve) {
         rd.drive(throttle, curve);
     }
     
+    /**
+     * Tank Drive Method
+     * @param leftThrottle Speed for Left Victor
+     * @param rightThrottle Speed for Right Victor
+     */
     public void tankDrive(double leftThrottle, double rightThrottle) {
         rd.tankDrive(leftThrottle, rightThrottle);
     }
     
+    /**
+     * Arcade Drive Method
+     * @param throttle How fast to go
+     * @param curve How much to turn
+     */
     public void arcadeDrive(double throttle, double curve) {
         rd.arcadeDrive(throttle, curve);
     }
     
+    /**
+     * 
+     * @return Current Speed of Left Victor
+     */
     public double getLeftThrottle() {
         return left.getSpeed();
     }
     
+    /**
+     * 
+     * @return Current Speed of Right Victor
+     */
     public double getRightThrottle() {
         return right.getSpeed();
     }

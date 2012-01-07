@@ -43,6 +43,7 @@ public class Main extends IterativeRobot {
     public void disabledPeriodic() {
         db.post("Robot Status", "Disabled");
         dt.drive(0,0);
+        bd.updateDash();
     }
     
     /**
@@ -51,6 +52,7 @@ public class Main extends IterativeRobot {
     public void autonomousPeriodic() {
         db.post("Robot Status", "Autonomous");
         dt.drive(0,0);
+        bd.updateDash();
     }
 
     /**
