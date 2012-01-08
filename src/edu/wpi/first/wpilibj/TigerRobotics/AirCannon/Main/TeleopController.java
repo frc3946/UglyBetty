@@ -12,23 +12,23 @@ import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.DriveTrain;
 import edu.wpi.first.wpilibj.TigerRobotics.AirCannon.SubSystems.AirCannon;
 /**
  * Handles getting inputs from Controls and sending data to Subsystems
- * @author gixxy
+ * @author Gus Michel
  */
 public class TeleopController {
     private static TeleopController instance = null;
-    private DriveTrain dt;
-    private AirCannon ac;
-    private ControlMap cm;
-    public SoftSwitchBoard ssb;
+    private DriveTrain driveTrain;
+    private AirCannon airCannon;
+    private ControlMap controlMap;
+    public SoftSwitchBoard softSwitchBoard;
     
     private void TeleopController() {
-        dt = DriveTrain.getInstance();
-        ac = AirCannon.getInstance();
-        cm = ArcadeControl.getInstance();
-        ssb = SoftSwitchBoard.getInstance();
+        driveTrain = DriveTrain.getInstance();
+        airCannon = AirCannon.getInstance();
+        controlMap = ArcadeControl.getInstance();
+        softSwitchBoard = SoftSwitchBoard.getInstance();
     }
     /**
-     * 
+     * Get Instance of TeleopController
      * @return Singleton Instance
      */
     public static TeleopController getInstance() {
@@ -41,25 +41,25 @@ public class TeleopController {
      * Gets inputs from Control package and sends them to the SubSystems package
      */
     public void handle() {
-        cm.setStopSwitch();
-        cm.setTankSwitch();
+        controlMap.setStopSwitch();
+        controlMap.setTankSwitch();
         
-        if(!ssb.getStopModeSwitch().getState()) { //Robot is not stopped
-            if(cm.getFire()) { //Robot is firing
-                dt.drive(0,0);
-                ac.fire();
-                ssb.getStopModeSwitch().setState(true);
+        if(!softSwitchBoard.getStopModeSwitch().getState()) { //Robot is not stopped
+            if(controlMap.getFire()) { //Robot is firing
+                driveTrain.drive(0,0);
+                airCannon.fire();
+                softSwitchBoard.getStopModeSwitch().setState(true);
             } else { //Robot is not firing
-                if(ssb.getTankModeSwitch().getState()) {
-                    cm = TankControl.getInstance();
-                    dt.tankDrive(cm.getLeftThrottle(), cm.getRightThrottle());
+                if(softSwitchBoard.getTankModeSwitch().getState()) {
+                    controlMap = TankControl.getInstance();
+                    driveTrain.tankDrive(controlMap.getLeftThrottle(), controlMap.getRightThrottle());
                 } else {
-                    cm = ArcadeControl.getInstance();
-                    dt.arcadeDrive(cm.getThrottle(), cm.getTurn());
+                    controlMap = ArcadeControl.getInstance();
+                    driveTrain.arcadeDrive(controlMap.getThrottle(), controlMap.getTurn());
                 }
             }
         } else { //Robot is Stopped
-            dt.drive(0,0);
+            driveTrain.drive(0,0);
         }
     }
 }

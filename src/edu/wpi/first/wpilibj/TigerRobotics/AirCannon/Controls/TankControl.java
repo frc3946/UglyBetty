@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
 
 /**
  * Control interface while in Tank Mode
- * @author gixxy
+ * @author Gus Michel
  */
 public class TankControl implements ControlMap {
     private int RIGHTSTICK_PORT = 1;
@@ -18,20 +18,20 @@ public class TankControl implements ControlMap {
     private int TANKSWITCH_BUTTON = 2;
     private int FIRE_BUTTON = 3;
     private static TankControl instance = null;
-    private DashBoard db;
-    private SoftSwitchBoard ssb;
+    private DashBoard dashBoard;
+    private SoftSwitchBoard theSoftSwitchBoard;
     private Joystick rightStick;
     private Joystick leftStick;
     
     private TankControl() {
-        db = DashBoard.getInstance();
-        ssb = SoftSwitchBoard.getInstance();
+        dashBoard = DashBoard.getInstance();
+        theSoftSwitchBoard = SoftSwitchBoard.getInstance();
         rightStick = new Joystick(RIGHTSTICK_PORT);
         leftStick = new Joystick(LEFTSTICK_PORT);
     }
     
     /**
-     * 
+     * Get Instance of TankControl
      * @return Singleton Instance
      */
     public static TankControl getInstance() {
@@ -46,7 +46,7 @@ public class TankControl implements ControlMap {
      * @return 0 for Motors
      */
     public double getThrottle() {
-        db.post("Drive Error","getThrottle in Tank");
+        dashBoard.post("Drive Error","getThrottle in Tank");
         return 0.0;
     }
     
@@ -55,12 +55,12 @@ public class TankControl implements ControlMap {
      * @return 0 for Motors
      */
     public double getTurn() {
-        db.post("Drive Error","getTurn in Tank");
+        dashBoard.post("Drive Error","getTurn in Tank");
         return 0.0;
     }
     
     /**
-     * 
+     * Get Throttle of Left Joystick
      * @return Left Joystick Y-axis.
      */
     public double getLeftThrottle() {
@@ -68,7 +68,7 @@ public class TankControl implements ControlMap {
     }
 
     /**
-     * 
+     * Get Throttle of Right Joystick
      * @return Right Joystick Y-axis.
      */
     public double getRightThrottle() {
@@ -76,7 +76,7 @@ public class TankControl implements ControlMap {
     }
 
     /**
-     * 
+     * Get State of Fire Button
      * @return State of Fire Button.
      */
     public boolean getFire() {
@@ -88,7 +88,7 @@ public class TankControl implements ControlMap {
      */
     public void setStopSwitch() {
         if(rightStick.getRawButton(STOPSWITCH_BUTTON)) {
-            ssb.getStopModeSwitch().toggleState();
+            theSoftSwitchBoard.getStopModeSwitch().toggleState();
         }
     }
 
@@ -97,7 +97,7 @@ public class TankControl implements ControlMap {
      */
     public void setTankSwitch() {
         if(rightStick.getRawButton(TANKSWITCH_BUTTON)) {
-            ssb.getTankModeSwitch().toggleState();
+            theSoftSwitchBoard.getTankModeSwitch().toggleState();
         }
     }
 }

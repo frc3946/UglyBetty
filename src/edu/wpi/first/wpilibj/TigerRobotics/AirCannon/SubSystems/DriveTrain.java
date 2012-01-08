@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Victor;
 
 /**
  * Handles driving the AirCannon
- * @author gixxy
+ * @author Gus Michel
  */
 public class DriveTrain {
     private int LEFT_VICTOR_SLOT = 1;
@@ -17,16 +17,16 @@ public class DriveTrain {
     private static DriveTrain instance = null;
     private Victor left;
     private Victor right;
-    private RobotDrive rd;
+    private RobotDrive robotDrive;
     
     private void DriveTrain() {
         left = new Victor(LEFT_VICTOR_SLOT);
         right = new Victor(RIGHT_VICTOR_SLOT);
-        rd = new RobotDrive(left,right);
+        robotDrive = new RobotDrive(left,right);
     }
     
     /**
-     * 
+     * Get Instance of DriveTrain
      * @return Singleton Instance
      */
     public static DriveTrain getInstance() {
@@ -42,7 +42,7 @@ public class DriveTrain {
      * @param curve How much to turn
      */
     public void drive(double throttle, double curve) {
-        rd.drive(throttle, curve);
+        robotDrive.drive(throttle, curve);
     }
     
     /**
@@ -51,7 +51,7 @@ public class DriveTrain {
      * @param rightThrottle Speed for Right Victor
      */
     public void tankDrive(double leftThrottle, double rightThrottle) {
-        rd.tankDrive(leftThrottle, rightThrottle);
+        robotDrive.tankDrive(leftThrottle, rightThrottle);
     }
     
     /**
@@ -60,11 +60,11 @@ public class DriveTrain {
      * @param curve How much to turn
      */
     public void arcadeDrive(double throttle, double curve) {
-        rd.arcadeDrive(throttle, curve);
+        robotDrive.arcadeDrive(throttle, curve);
     }
     
     /**
-     * 
+     * Get Speed of Left Victor
      * @return Current Speed of Left Victor
      */
     public double getLeftThrottle() {
@@ -72,7 +72,7 @@ public class DriveTrain {
     }
     
     /**
-     * 
+     * Get Speed of Right Victor
      * @return Current Speed of Right Victor
      */
     public double getRightThrottle() {

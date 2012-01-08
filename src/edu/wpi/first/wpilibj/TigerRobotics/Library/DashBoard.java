@@ -9,18 +9,18 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 /**
  * Used to redo the deprecated log() methods as post(). 
  * Handles actual posting to SmartDashboard
- * @author gixxy
+ * @author Gus Michel
  */
 public class DashBoard {
     private static DashBoard instance = null;
-    private static SmartDashboard sd;
+    private static SmartDashboard smartDashBoard;
     
     private DashBoard() {
-        sd = new SmartDashboard();
+        smartDashBoard = new SmartDashboard();
     }
     
     /**
-     * 
+     * Get instance of DashBoard
      * @return Singleton Instance
      */
     public static DashBoard getInstance() {
@@ -31,7 +31,7 @@ public class DashBoard {
     }
     
     /**
-     * Posts to SmartDashboard
+     * Posts INT to SmartDashboard
      * @param key What slot on Dashboard to put this in
      * @param value What value to put in the slot
      */
@@ -40,7 +40,7 @@ public class DashBoard {
     }
     
     /**
-     * Posts to SmartDashboard
+     * Posts DOUBLE to SmartDashboard
      * @param key What slot on Dashboard to put this in
      * @param value What value to put in the slot
      */
@@ -49,7 +49,7 @@ public class DashBoard {
     }
     
     /**
-     * Posts to SmartDashboard
+     * Posts BOOLEAN to SmartDashboard
      * @param key What slot on Dashboard to put this in
      * @param value What value to put in the slot
      */
@@ -58,7 +58,7 @@ public class DashBoard {
     }
     
     /**
-     * Posts to SmartDashboard
+     * Posts STRING to SmartDashboard
      * @param key What slot on Dashboard to put this in
      * @param value What value to put in the slot
      */

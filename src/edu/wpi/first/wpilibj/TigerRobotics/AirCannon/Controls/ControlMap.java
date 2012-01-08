@@ -6,8 +6,8 @@ package edu.wpi.first.wpilibj.TigerRobotics.AirCannon.Controls;
 
 
 /**
- *
- * @author gixxy
+ * Common Interface for various controls system layouts
+ * @author Gus Michel
  */
 public interface ControlMap {
     public double getThrottle();

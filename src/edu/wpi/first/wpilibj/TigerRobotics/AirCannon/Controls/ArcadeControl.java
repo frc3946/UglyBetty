@@ -17,18 +17,18 @@ public class ArcadeControl implements ControlMap {
     private int TANKSWITCH_BUTTON = 2;
     private int FIRE_BUTTON = 3;
     private static ArcadeControl instance = null;
-    private DashBoard db;
-    private SoftSwitchBoard ssb;
+    private DashBoard dashBoard;
+    private SoftSwitchBoard softSwitchBoard;
     private Joystick driveStick;
     
     private ArcadeControl() {
-        db = DashBoard.getInstance();
-        ssb = SoftSwitchBoard.getInstance();
+        dashBoard = DashBoard.getInstance();
+        softSwitchBoard = SoftSwitchBoard.getInstance();
         driveStick = new Joystick(DRIVESTICK_PORT);
     }
     
     /**
-     * 
+     * Get Instance of ArcadeControl
      * @return Singleton Instance
      */
     public static ArcadeControl getInstance() {
@@ -39,7 +39,7 @@ public class ArcadeControl implements ControlMap {
     }
     
     /**
-     * 
+     * Get the Throttle of the Joystick
      * @return Joystick Y-axis
      */
     public double getThrottle() {
@@ -47,7 +47,7 @@ public class ArcadeControl implements ControlMap {
     }
     
     /**
-     * 
+     * Get the Turn of the Joystick
      * @return Joystick X-axis
      */
     public double getTurn() {
@@ -59,7 +59,7 @@ public class ArcadeControl implements ControlMap {
      * @return 0 for Drive Motors
      */
     public double getLeftThrottle() {
-        db.post("Drive Error","getLeftThrottle in Arcade");
+        dashBoard.post("Drive Error","getLeftThrottle in Arcade");
         return 0.0;
     }
     
@@ -68,12 +68,12 @@ public class ArcadeControl implements ControlMap {
      * @return 0 for Drive Motors
      */
     public double getRightThrottle() {
-        db.post("Drive Error","getRightThrottle in Arcade");
+        dashBoard.post("Drive Error","getRightThrottle in Arcade");
         return 0.0;
     }
     
     /**
-     * 
+     * Get state of Fire Button
      * @return State of the Fire Button
      */
     public boolean getFire() {
@@ -85,7 +85,7 @@ public class ArcadeControl implements ControlMap {
      */
     public void setStopSwitch() {
         if(driveStick.getRawButton(STOPSWITCH_BUTTON)) {
-            ssb.getStopModeSwitch().toggleState();
+            softSwitchBoard.getStopModeSwitch().toggleState();
         }
     }
     
@@ -94,7 +94,7 @@ public class ArcadeControl implements ControlMap {
      */
     public void setTankSwitch() {
         if(driveStick.getRawButton(TANKSWITCH_BUTTON)) {
-            ssb.getTankModeSwitch().toggleState();
+            softSwitchBoard.getTankModeSwitch().toggleState();
         }
     }
 }

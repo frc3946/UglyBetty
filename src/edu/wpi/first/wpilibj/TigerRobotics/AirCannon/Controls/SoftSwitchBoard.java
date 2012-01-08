@@ -21,7 +21,7 @@ public class SoftSwitchBoard {
     }
     
     /**
-     * 
+     * Get Instance of SoftSwitchBoard
      * @return Singleton Instance
      */
     public static SoftSwitchBoard getInstance() {
@@ -32,7 +32,7 @@ public class SoftSwitchBoard {
     }
     
     /**
-     * 
+     * Get TankMode SoftSwitch Instance
      * @return Tank Mode Switch Instance
      */
     public SoftSwitch getTankModeSwitch() {
@@ -40,7 +40,7 @@ public class SoftSwitchBoard {
     }
     
     /**
-     * 
+     * Get StopMode SoftSwitch Instance
      * @return Stop Mode Switch Instance
      */
     public SoftSwitch getStopModeSwitch() {

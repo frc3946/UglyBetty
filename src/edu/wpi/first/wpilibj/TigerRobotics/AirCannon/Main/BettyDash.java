@@ -10,22 +10,22 @@ import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
 
 /**
  * Handles setup and periodic updating of SmartDashboard
- * @author gixxy
+ * @author Gus Michel
  */
 public class BettyDash {
     private static BettyDash instance = null;
-    private DashBoard db;
-    private SoftSwitchBoard ssb;
-    private DriveTrain dt;
+    private DashBoard dashBoard;
+    private SoftSwitchBoard softSwitchBoard;
+    private DriveTrain driveTrain;
     
     private BettyDash() {
-        db = DashBoard.getInstance();
-        ssb = SoftSwitchBoard.getInstance();
-        dt= DriveTrain.getInstance();
+        dashBoard = DashBoard.getInstance();
+        softSwitchBoard = SoftSwitchBoard.getInstance();
+        driveTrain= DriveTrain.getInstance();
     }
     
     /**
-     * 
+     * Get Instance of BettyDash
      * @return Singleton Instance
      */
     public static BettyDash getInstance() {
@@ -38,25 +38,25 @@ public class BettyDash {
      * Sets up all spaces on the Dashboard.
      */
     public void setupDash() {
-        db.post("Robot Status", "Robot Init");
-        db.post("Stopped", false);
-        db.post("Mode", "Arcade");
-        db.post("Left Drive", 0.0);
-        db.post("Right Drive", 0.0);
-        db.post("Drive Error", "Null");
+        dashBoard.post("Robot Status", "Robot Init");
+        dashBoard.post("Stopped", false);
+        dashBoard.post("Mode", "Arcade");
+        dashBoard.post("Left Drive", 0.0);
+        dashBoard.post("Right Drive", 0.0);
+        dashBoard.post("Drive Error", "Null");
     }
     
     /**
      * Updates most spaces in the Dashboard.
      */
     public void updateDash() {
-        db.post("Stopped", ssb.getStopModeSwitch().getState());
-        if(ssb.getTankModeSwitch().getState()) {
-            db.post("Mode", "Tank");
+        dashBoard.post("Stopped", softSwitchBoard.getStopModeSwitch().getState());
+        if(softSwitchBoard.getTankModeSwitch().getState()) {
+            dashBoard.post("Mode", "Tank");
         } else {
-            db.post("Mode", "Arcade");
+            dashBoard.post("Mode", "Arcade");
         }
-        db.post("Left Drive",dt.getLeftThrottle());
-        db.post("Right Drive",dt.getRightThrottle());
+        dashBoard.post("Left Drive",driveTrain.getLeftThrottle());
+        dashBoard.post("Right Drive",driveTrain.getRightThrottle());
     }
 }

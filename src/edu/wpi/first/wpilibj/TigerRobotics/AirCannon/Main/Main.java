@@ -20,48 +20,48 @@ import edu.wpi.first.wpilibj.TigerRobotics.Library.DashBoard;
  * directory.
  */
 public class Main extends IterativeRobot {
-    TeleopController tc;
-    BettyDash bd;
-    DashBoard db;
-    DriveTrain dt;
+    TeleopController teleopController;
+    BettyDash bettyDash;
+    DashBoard dashBoard;
+    DriveTrain driveTrain;
     
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        tc = new TeleopController();
-        bd = BettyDash.getInstance();
-        db = DashBoard.getInstance();
-        dt = DriveTrain.getInstance();
-        bd.setupDash();
+        teleopController = new TeleopController();
+        bettyDash = BettyDash.getInstance();
+        dashBoard = DashBoard.getInstance();
+        driveTrain = DriveTrain.getInstance();
+        bettyDash.setupDash();
     }
     
     /**
      * This function is called periodically while disabled
      */
     public void disabledPeriodic() {
-        db.post("Robot Status", "Disabled");
-        dt.drive(0,0);
-        bd.updateDash();
+        dashBoard.post("Robot Status", "Disabled");
+        driveTrain.drive(0,0);
+        bettyDash.updateDash();
     }
     
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        db.post("Robot Status", "Autonomous");
-        dt.drive(0,0);
-        bd.updateDash();
+        dashBoard.post("Robot Status", "Autonomous");
+        driveTrain.drive(0,0);
+        bettyDash.updateDash();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        tc.handle();
-        db.post("Robot Status", "Teleop");
-        bd.updateDash();
+        teleopController.handle();
+        dashBoard.post("Robot Status", "Teleop");
+        bettyDash.updateDash();
     }
     
 }

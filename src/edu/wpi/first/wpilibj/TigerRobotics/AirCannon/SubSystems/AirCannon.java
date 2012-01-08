@@ -9,19 +9,19 @@ import edu.wpi.first.wpilibj.Timer;
 
 /**
  * Handles the AirCannon's Cannon
- * @author gixxy
+ * @author Gus Michel
  */
 public class AirCannon {
     private int CANNON_PWM_SLOT = 1;
     public static AirCannon instance = null;
-    private PWM ac;
+    private PWM cannon;
     
     private void AirCannon() {
-        ac = new PWM(CANNON_PWM_SLOT);
+        cannon = new PWM(CANNON_PWM_SLOT);
     }
     
     /**
-     * 
+     * Get Instance of AirCannon
      * @return Singleton Instance
      */
     public static AirCannon getInstance() {
@@ -34,9 +34,9 @@ public class AirCannon {
      * Fires the Air Cannon
      */
     public void fire() {
-        ac.setPosition(1);
+        cannon.setPosition(1);
         Timer.delay(4);
-        ac.setPosition(0);
+        cannon.setPosition(0);
     }
     
     /**

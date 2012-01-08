@@ -6,7 +6,7 @@ package edu.wpi.first.wpilibj.TigerRobotics.Library;
 
 /**
  * Class for the SoftSwitches, used in conjunction with a SoftSwitchBoard.
- * @author gixxy
+ * @author Gus Michel
  */
 public class SoftSwitch {
     private boolean state;
@@ -35,7 +35,7 @@ public class SoftSwitch {
     }
     
     /**
-     * 
+     * Get State of SoftSwitch Instance
      * @return Current State of Switch Instance
      */
     public boolean getState() {
